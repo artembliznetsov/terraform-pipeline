@@ -13,6 +13,7 @@ resource "aws_instance" "example" {
             type = "ssh"
             user = "ubuntu"
             host = "${self.public_ip}"
+            private_key = "~/.ssh/id_rsa"
         }
 
         inline = [
