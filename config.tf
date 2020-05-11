@@ -9,9 +9,15 @@ resource "aws_instance" "example" {
     security_groups = ["General group"]
 
     provisioner "remote-exec" {
+        connection {
+            type = "ssh"
+            user = "ubuntu"
+            host = "${self.public_ip}"
+        }
+
         inline = [
-            "apt update",
-            "apt install -y nginx"
+            "sudo apt update",
+            "sudo apt install -y nginx"
         ]
     }
 }
