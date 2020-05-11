@@ -18,7 +18,8 @@ resource "aws_instance" "example" {
 
         inline = [
             "sudo apt update",
-            "sudo apt install -y nginx"
+            "sudo apt install -y nginx",
+            "sudo sed -i 's/<h1>.*/<h1>Welcome to host ${self.public_ip}<\/h1>/' /var/www/html/index.nginx-debian.html"
         ]
     }
 }
