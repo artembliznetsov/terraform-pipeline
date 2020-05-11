@@ -8,11 +8,11 @@ resource "aws_instance" "example" {
     key_name = "myKey"
     security_groups = ["General group"]
 
-    provisioner "local-exec" {
-        command = "apt update"
-    }
-    provisioner "local-exec" {
-        command = "apt install -y nginx"
+    provisioner "remote-exec" {
+        inline = [
+            "apt update",
+            "apt install -y nginx"
+        ]
     }
 }
 
