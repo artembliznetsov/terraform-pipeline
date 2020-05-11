@@ -5,9 +5,14 @@ provider "aws" {
 resource "aws_instance" "example" {
  ami = "ami-07c1207a9d40bc3bd"
  instance_type = "t2.micro"
+ key_name = "myKey"
 
  provisioner "local-exec" {
-    command = "echo IP ${self.private_ip}"
+    command = "apt update"
  }
+ provisioner "local-exec" {
+    command = "apt install -y nginx"
+ }
+
 }
 
