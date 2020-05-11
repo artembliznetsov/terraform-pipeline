@@ -7,7 +7,7 @@ resource "aws_instance" "example" {
  instance_type = "t2.micro"
 
  provisioner "local-exec" {
-    command = "IP ${self.private_ip}"
+    command = "echo IP ${self.private_ip}"
  }
 }
 
